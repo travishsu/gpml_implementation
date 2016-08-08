@@ -31,7 +31,7 @@ y_star = dot( kerMat(x_star, x), w )
 # Plotting
 figure()
 plot(x_star, y_star)
-plot(x_star, np.sin(x_star))
+plot(x_star, sin(x_star))
 for i in range(x.size):
     scatter( x[i], y[i] )
 show()
