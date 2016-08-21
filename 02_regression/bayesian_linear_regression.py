@@ -4,7 +4,7 @@ from matplotlib.pylab import plt, scatter
 
 def covariance( x_1, x_2 ):
     # Squared Exponential covariance function
-    l = 5 # length-scale parameter
+    l = 0.064 # length-scale parameter
     return exp( - power(norm(x_1 - x_2)/l, 2  ) * 0.5 )
 
 def feature(x):
@@ -20,7 +20,7 @@ def kerMat(xlist, ylist):
 def fit(x, y, noise_level):
     L = cholesky( kerMat(x, x) + noise_level * eye(x.size) )
     w = solve( L.T, solve( L, y ) )
-    log_marginal_likelihood = - dot(y, w)/2 - sum( log( diag( L ) ) ) ) - x.size*log(2*pi)/2
+    log_marginal_likelihood = - dot(y, w)/2 - sum( log( diag( L ) ) ) - x.size*log(2*pi)/2
     return w, fit_score
 
 def predict(x, X, w, L):
@@ -30,7 +30,7 @@ def predict(x, X, w, L):
     return f, var
 
 # Generating Training Data
-x = linspace(0, 2*pi, 5)
+x = linspace(0, 2*pi, 50)
 y = sin(x)
 
 # Modeling: Parameters estimation
