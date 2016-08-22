@@ -15,7 +15,7 @@ class GaussianProcessRegression:
 
     def covariance( self, x_1, x_2 ):
         # Squared Exponential covariance function
-        l = 1 # length-scale parameter
+        l = 1   # length-scale parameter
         return exp( - power(norm(x_1 - x_2)/l, 2  ) * 0.5 )
 
     def feature( self, x ):
